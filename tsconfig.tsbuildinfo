@@ -1,0 +1,1 @@
+{"root":["./src/app.ts","./src/drizzle.config.ts","./src/controllers/setupdata.ts","./src/controllers/usercontroller.ts","./src/db/index.ts","./src/db/schema.ts","./src/routes/indexrouter.ts"],"version":"5.8.2"}

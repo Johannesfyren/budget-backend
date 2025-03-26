@@ -1,9 +1,11 @@
 import express = require ("express");
-import * from "./routes/baseRoutes"
+const indexRouter = require ("./routes/indexRouter");
 import 'dotenv/config';
 const app = express();
 
-app.use('/', (req: any, res:any) => res.send("hello"));
+app.use('/',  indexRouter);
+
+
 
 const PORT = process.env.PORT || 3000;
 
