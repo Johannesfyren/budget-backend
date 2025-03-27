@@ -7,22 +7,35 @@ import { error } from 'console';
 const db = drizzle(process.env.DATABASE_URL!);
 
 
+//User queries
 export async function getUsers() {
     return await db.select().from(usersTable);
 }
 
-
-
-
-export async function main() {
-  const user: typeof usersTable.$inferInsert = {
-    name: 'John',
-    email: 'john@example.com',
-  };
-
-  await db.insert(usersTable).values(user);
-  console.log('New user created!')
+//Category queries
+export async function getCategories() {
+  return await db.select().from(usersTable);
 }
+
+
+//expenses queries
+export async function getExpenses() {
+  return await db.select().from(usersTable);
+}
+
+
+
+
+
+// export async function main() {
+//   const user: typeof usersTable.$inferInsert = {
+//     name: 'Johannes Hergaard',
+//     email: 'hergaardjohannes@gmail.com',
+//   };
+
+//   await db.insert(usersTable).values(user);
+//   console.log('New user created!')
+// }
 
 //   const users = await db.select().from(usersTable);
 //   console.log('Getting all users from the database: ', users)

@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const express = require("express");
-const indexRouter = require("./routes/indexRouter");
+var express = require("express");
+var indexRouter = require("./routes/indexRouter");
 require("dotenv/config");
-const app = express();
+var app = express();
 app.use('/', indexRouter);
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`My first Express app - listening on port ${PORT}!`);
+var PORT = process.env.PORT || 3000;
+app.listen(PORT, function () {
+    console.log("My first Express app - listening on port ".concat(PORT, "!"));
 });
