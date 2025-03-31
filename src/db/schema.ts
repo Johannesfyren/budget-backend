@@ -19,7 +19,7 @@ export const categoryTable = pgTable("categories", {
   FKSectionID: integer("FK_section_ID").references(() => sectionsTable.id),
 });
 
-export const expenses = pgTable("expenses", {
+export const expensesTable = pgTable("expenses", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   FKCategoryID: integer("FK_category_ID").references(()=>categoryTable.id, {onDelete: 'cascade'}),
   name: varchar({ length: 255 }).notNull(),

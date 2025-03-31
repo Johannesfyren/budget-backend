@@ -1,6 +1,6 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { eq } from 'drizzle-orm';
-import { categoryTable, sectionsTable, usersTable } from './schema';
+import { categoryTable, expensesTable, sectionsTable, usersTable } from './schema';
 import 'dotenv/config';
 import { error } from 'console';
 
@@ -14,7 +14,15 @@ export async function getUsers() {
 
 //Category queries
 export async function getAllCategoriesFromSections(sectionID: number) {
-  return await db.select().from(categoryTable).leftJoin(sectionsTable, eq(categoryTable.FKSectionID, sectionsTable.id)).where(eq(sectionsTable.id, sectionID));
+  return await db.select({
+    Field1: categoryTable.name,
+    Field2: expensesTable.name,
+    Field3: expensesTable.value,
+      })
+    .from(expensesTable)
+    .innerJoin(categoryTable, eq(categoryTable.id, expensesTable.FKCategoryID))
+    .where(eq(categoryTable.FKSectionID, sectionID));
+
 }
 
 
