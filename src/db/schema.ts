@@ -6,7 +6,7 @@ export const usersTable = pgTable("users", {
   email: varchar({ length: 255 }).notNull().unique(),
 });
 
-export const sections = pgTable("sections", {
+export const sectionsTable = pgTable("sections", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   name: varchar({ length: 255 }).notNull(),
 });
@@ -16,7 +16,7 @@ export const categoryTable = pgTable("categories", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   name: varchar({ length: 255 }).notNull(),
   FKUserID: integer("FK_user_ID").references(()=>usersTable.id, {onDelete: 'cascade'}),
-  FKSectionID: integer("FK_section_ID").references(() => sections.id),
+  FKSectionID: integer("FK_section_ID").references(() => sectionsTable.id),
 });
 
 export const expenses = pgTable("expenses", {

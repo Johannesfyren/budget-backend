@@ -1,6 +1,6 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { eq } from 'drizzle-orm';
-import { usersTable } from './schema';
+import { categoryTable, sectionsTable, usersTable } from './schema';
 import 'dotenv/config';
 import { error } from 'console';
 
@@ -13,8 +13,8 @@ export async function getUsers() {
 }
 
 //Category queries
-export async function getCategories() {
-  return await db.select().from(usersTable);
+export async function getAllCategoriesFromSections(sectionID: number) {
+  return await db.select().from(categoryTable).leftJoin(sectionsTable, eq(categoryTable.FKSectionID, sectionsTable.id)).where(eq(sectionsTable.id, sectionID));
 }
 
 
@@ -22,46 +22,5 @@ export async function getCategories() {
 export async function getExpenses() {
   return await db.select().from(usersTable);
 }
-
-
-
-
-
-// export async function main() {
-//   const user: typeof usersTable.$inferInsert = {
-//     name: 'Johannes Hergaard',
-//     email: 'hergaardjohannes@gmail.com',
-//   };
-
-//   await db.insert(usersTable).values(user);
-//   console.log('New user created!')
-// }
-
-//   const users = await db.select().from(usersTable);
-//   console.log('Getting all users from the database: ', users)
-//   /*
-//   const users: {
-//     id: number;
-//     name: string;
-//     age: number;
-//     email: string;
-//   }[]
-//   */
-// try{
-//   await db
-//     .update(usersTable)
-//     .set({
-//       age: 31,
-//     })
-//     .where(eq(usersTable.email, user.email));
-//   console.log('User info updated!')
-// }catch(error){
-//     console.log(error)
-// }
-  
-//   await db.delete(usersTable).where(eq(usersTable.email, user.email));
-//   console.log('User deleted!')
-
-// }
 
 

@@ -1,16 +1,18 @@
 import * as db from "../db/index"
 import { Request, Response } from "express";
 
-const C_getUsers =  async (req: Request, res: Response) =>{
+
+const C_getAllCategoriesFromSections = async (req: Request, res: Response) =>{
     try{
-        const users = await db.getUsers();
+        const sectionID = req.params.sectionID;
+        const data = await db.getAllCategoriesFromSections(Number(sectionID));
         
-        if(!users){
+        if(!data){
             console.log("error in getUsers");
             res.send("No users found")
         }
-        console.log(users);
-        return users;
+        console.log(data);
+        return data;
     }catch(err){
         console.log("error in getUsers", err);
         res.status(500).send("An error occurred");
@@ -27,5 +29,5 @@ const C_getUsers =  async (req: Request, res: Response) =>{
 
 
 export {
-    C_getUsers,
+    C_getAllCategoriesFromSections,
 }
