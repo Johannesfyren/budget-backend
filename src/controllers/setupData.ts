@@ -12,7 +12,7 @@ const C_getAllCategoriesFromSections = async (req: Request, res: Response) =>{
             res.send("No users found")
         }
         console.log(data);
-        return data;
+        res.json(data);
     }catch(err){
         console.log("error in getUsers", err);
         res.status(500).send("An error occurred");

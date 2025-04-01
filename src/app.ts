@@ -3,8 +3,10 @@ const indexRouter = require ("./routes/indexRouter");
 import 'dotenv/config';
 const app = express();
 
-app.use('/',  indexRouter);
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
 
+app.use('/',  indexRouter);
 
 
 const PORT = process.env.PORT || 3000;

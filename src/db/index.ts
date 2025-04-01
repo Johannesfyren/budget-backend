@@ -15,9 +15,10 @@ export async function getUsers() {
 //Category queries
 export async function getAllCategoriesFromSections(sectionID: number) {
   return await db.select({
-    Field1: categoryTable.name,
-    Field2: expensesTable.name,
-    Field3: expensesTable.value,
+    category: categoryTable.name,
+    expenseName: expensesTable.name,
+    expenseValue: expensesTable.value,
+    payRate: expensesTable.FKPayRate,
       })
     .from(expensesTable)
     .innerJoin(categoryTable, eq(categoryTable.id, expensesTable.FKCategoryID))

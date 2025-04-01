@@ -11,7 +11,6 @@ export const sectionsTable = pgTable("sections", {
   name: varchar({ length: 255 }).notNull(),
 });
 
-
 export const categoryTable = pgTable("categories", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   name: varchar({ length: 255 }).notNull(),
@@ -24,4 +23,10 @@ export const expensesTable = pgTable("expenses", {
   FKCategoryID: integer("FK_category_ID").references(()=>categoryTable.id, {onDelete: 'cascade'}),
   name: varchar({ length: 255 }).notNull(),
   value: doublePrecision(),
+  FKPayRate: integer("FK_payrate_ID").references(()=>payRate.id),
 });
+
+export const payRate = pgTable("payrate", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  rate: varchar({ length: 10 }).notNull(),
+})
