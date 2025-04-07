@@ -11,3 +11,12 @@ Content-Type: application/json
     "password": "12345"
 
 }
+
+###
+
+POST http://127.0.0.1:3001/auth/login
+Content-Type: application/json
+
+{
+    "email": "cmh@mail.com"
+}

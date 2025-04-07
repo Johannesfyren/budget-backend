@@ -12,8 +12,11 @@ import { error } from "console";
 const db = drizzle(process.env.DATABASE_URL!);
 
 //User queries
-export async function getUsers() {
+export async function getAllUsers() {
   return await db.select().from(usersTable);
+}
+export async function getUser(email:string) {
+  return await db.select().from(usersTable).where(eq(usersTable.email,email));
 }
 
 export async function createUser(
@@ -21,7 +24,6 @@ export async function createUser(
   email: string,
   password: string
 ) {
-
   return await db
     .insert(usersTable)
     .values({ name: name, email: email, password: password });

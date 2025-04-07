@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt")
 
 const C_getUsers =  async (req: Request, res: Response) =>{
     try{
-        const users = await db.getUsers();
+        const users = await db.getAllUsers();
         
         if(!users){
             console.log("error in getUsers");
@@ -25,16 +25,30 @@ const C_createUser = async (req: Request, res: Response) =>{
     try{
         const hashedPW = await bcrypt.hash(req.body.password, 10);
         const users = db.createUser(req.body.name, req.body.email, hashedPW);
-        
-        return users;
+        res.status(200).send();
+        //return users;
     }catch(err){
         console.log("error in getUsers", err);
         res.status(500).send("An error occurred");
     }
 }
 
+const C_loginUser = async (req: Request, res: Response) =>{
+
+    try{
+        const user = await db.getUser(req.body.email);
+        res.json(user);
+    }catch(err){
+        //Not found user
+        console.log("error in getUsers", err);
+        res.status(500).send("An error occurred");
+    }
+}
+
+
 
 export {
     C_getUsers,
-    C_createUser
+    C_createUser,
+    C_loginUser
 }
