@@ -1,1 +1,1 @@
-{"root":["./src/app.ts","./src/controllers/setupdata.ts","./src/controllers/usercontroller.ts","./src/db/index.ts","./src/db/schema.ts","./src/routes/indexrouter.ts"],"version":"5.8.2"}
+{"root":["./src/app.ts","./src/config/cors.ts","./src/controllers/setupdata.ts","./src/controllers/usercontroller.ts","./src/db/index.ts","./src/db/schema.ts","./src/routes/authrouter.ts","./src/routes/indexrouter.ts"],"version":"5.8.2"}

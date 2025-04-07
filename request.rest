@@ -1,0 +1,13 @@
+GET http://127.0.0.1:3001/auth/getUsers
+
+###
+
+POST http://127.0.0.1:3001/auth/createUser
+Content-Type: application/json
+
+{
+    "name": "Cammi",
+    "email": "cmh@mail.com",
+    "password": "12345"
+
+}
