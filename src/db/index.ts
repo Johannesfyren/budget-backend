@@ -16,7 +16,7 @@ export async function getAllUsers() {
   return await db.select().from(usersTable);
 }
 export async function getUser(email:string) {
-  return await db.select().from(usersTable).where(eq(usersTable.email,email));
+  return await db.select().from(usersTable).where(eq(usersTable.email, email));
 }
 
 export async function createUser(
