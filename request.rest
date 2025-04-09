@@ -3,7 +3,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiO
 ###
 
 GET http://127.0.0.1:3001/setup/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJDdaUzZXRnZLYkVMZ0lkYWZTVjFMWi53VDQvRXlPcWt6L0c0WUo3WlBNalVWQlFxaENYOWJlIiwiaWF0IjoxNzQ0MjAzNTIwLCJleHAiOjE3NDQyMDcxMjB9.BIonTyQbsGLrdB9oTKkDnpm9tQxmGQat8M4dI7kiKyc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJDdaUzZXRnZLYkVMZ0lkYWZTVjFMWi53VDQvRXlPcWt6L0c0WUo3WlBNalVWQlFxaENYOWJlIiwiaWF0IjoxNzQ0MjA1MDMxLCJleHAiOjE3NDQyMDg2MzF9.PXIlALNjoao2FZWcWRwV8uewj7d67VtbfcSizASGcqw
 ###
 
 POST http://127.0.0.1:3001/user/createUser
@@ -22,6 +22,6 @@ POST http://127.0.0.1:3001/auth/login
 Content-Type: application/json
 
 {
-    "email": "cmh@mail.com",
-    "password": "12345"
+    "email": "cmh2@mail.com",
+    "password": "123456"
 }

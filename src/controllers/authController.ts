@@ -13,7 +13,11 @@ const C_loginUser = async (req: Request, res: Response) => {
 	try {
 		if (await bcrypt.compare(req.body.password, user[0].password)) {
 			const accessToken = jtw.sign(
-				user[0],
+				{
+					id: user[0].id,
+					name: user[0].name,
+					email: user[0].email,
+				},
 				process.env.ACCESS_TOKEN_SECRET,
 				{ expiresIn: "1h" }
 			);
