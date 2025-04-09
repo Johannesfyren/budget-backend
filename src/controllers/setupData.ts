@@ -4,6 +4,7 @@ import { Request, Response } from "express";
 const C_getAllCategoriesFromSections = async (req: Request, res: Response) => {
 	try {
 		const sectionID = req.params.sectionID;
+		if (req.user == undefined) return res.sendStatus(403);
 
 		const data = await db.getAllCategoriesFromSections(
 			Number(sectionID),
