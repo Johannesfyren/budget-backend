@@ -1,10 +1,10 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import { eq } from "drizzle-orm";
 import {
-  categoryTable,
-  expensesTable,
-  sectionsTable,
-  usersTable,
+	categoryTable,
+	expensesTable,
+	sectionsTable,
+	usersTable,
 } from "./schema";
 import "dotenv/config";
 import { error } from "console";
@@ -13,37 +13,43 @@ const db = drizzle(process.env.DATABASE_URL!);
 
 //User queries
 export async function getAllUsers() {
-  return await db.select().from(usersTable);
+	return await db.select().from(usersTable);
 }
-export async function getUser(email:string) {
-  return await db.select().from(usersTable).where(eq(usersTable.email, email));
+export async function getUser(email: string) {
+	return await db
+		.select()
+		.from(usersTable)
+		.where(eq(usersTable.email, email));
 }
 
 export async function createUser(
-  name: string,
-  email: string,
-  password: string
+	name: string,
+	email: string,
+	password: string
 ) {
-  return await db
-    .insert(usersTable)
-    .values({ name: name, email: email, password: password });
+	return await db
+		.insert(usersTable)
+		.values({ name: name, email: email, password: password });
 }
 
 //Category queries
 export async function getAllCategoriesFromSections(sectionID: number) {
-  return await db
-    .select({
-      category: categoryTable.name,
-      expenseName: expensesTable.name,
-      expenseValue: expensesTable.value,
-      payRate: expensesTable.FKPayRate,
-    })
-    .from(expensesTable)
-    .innerJoin(categoryTable, eq(categoryTable.id, expensesTable.FKCategoryID))
-    .where(eq(categoryTable.FKSectionID, sectionID));
+	return await db
+		.select({
+			category: categoryTable.name,
+			expenseName: expensesTable.name,
+			expenseValue: expensesTable.value,
+			payRate: expensesTable.FKPayRate,
+		})
+		.from(expensesTable)
+		.innerJoin(
+			categoryTable,
+			eq(categoryTable.id, expensesTable.FKCategoryID)
+		)
+		.where(eq(categoryTable.FKSectionID, sectionID));
 }
 
 //expenses queries
 export async function getExpenses() {
-  return await db.select().from(usersTable);
+	return await db.select().from(usersTable);
 }
