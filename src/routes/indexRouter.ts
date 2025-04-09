@@ -1,10 +1,13 @@
-import {Router} from "express";
-const setupData = require("../controllers/setupData")
+import { Router } from "express";
+import authenticateToken from "../middleware/authentication";
+const setupData = require("../controllers/setupData");
 
 const indexRouter = Router();
 
-//indexRouter.get('/', setupData.C_getUsers);
-indexRouter.get('/setup/:sectionID', setupData.C_getAllCategoriesFromSections)
-
+indexRouter.get(
+	"/setup/:sectionID",
+	authenticateToken,
+	setupData.C_getAllCategoriesFromSections
+);
 
 module.exports = indexRouter;

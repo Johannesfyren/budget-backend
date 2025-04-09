@@ -1,5 +1,5 @@
 import { drizzle } from "drizzle-orm/node-postgres";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 import {
 	categoryTable,
 	expensesTable,
@@ -33,7 +33,10 @@ export async function createUser(
 }
 
 //Category queries
-export async function getAllCategoriesFromSections(sectionID: number) {
+export async function getAllCategoriesFromSections(
+	sectionID: number,
+	userID: number
+) {
 	return await db
 		.select({
 			category: categoryTable.name,
@@ -46,7 +49,12 @@ export async function getAllCategoriesFromSections(sectionID: number) {
 			categoryTable,
 			eq(categoryTable.id, expensesTable.FKCategoryID)
 		)
-		.where(eq(categoryTable.FKSectionID, sectionID));
+		.where(
+			and(
+				eq(categoryTable.FKSectionID, sectionID),
+				eq(categoryTable.FKUserID, userID)
+			)
+		);
 }
 
 //expenses queries

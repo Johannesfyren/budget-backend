@@ -1,5 +1,9 @@
 GET http://127.0.0.1:3001/user/getUsers
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJDdaUzZXRnZLYkVMZ0lkYWZTVjFMWi53VDQvRXlPcWt6L0c0WUo3WlBNalVWQlFxaENYOWJlIiwiaWF0IjoxNzQ0MTg3MzExLCJleHAiOjE3NDQxOTA5MTF9.4_SEP94F7frecD40u6CsDANqhE2JoHox873xZNfmf6A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJDdaUzZXRnZLYkVMZ0lkYWZTVjFMWi53VDQvRXlPcWt6L0c0WUo3WlBNalVWQlFxaENYOWJlIiwiaWF0IjoxNzQ0MjAzNTc1LCJleHAiOjE3NDQyMDcxNzV9.Rdr-20Y3FrpQWmsvRGVmKib9FDsH_jBOicm1_uwTYNg
+###
+
+GET http://127.0.0.1:3001/setup/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJDdaUzZXRnZLYkVMZ0lkYWZTVjFMWi53VDQvRXlPcWt6L0c0WUo3WlBNalVWQlFxaENYOWJlIiwiaWF0IjoxNzQ0MjAzNTIwLCJleHAiOjE3NDQyMDcxMjB9.BIonTyQbsGLrdB9oTKkDnpm9tQxmGQat8M4dI7kiKyc
 ###
 
 POST http://127.0.0.1:3001/user/createUser
@@ -18,6 +22,6 @@ POST http://127.0.0.1:3001/auth/login
 Content-Type: application/json
 
 {
-    "email": "cmh2@mail.com",
-    "password": "123456"
+    "email": "cmh@mail.com",
+    "password": "12345"
 }
