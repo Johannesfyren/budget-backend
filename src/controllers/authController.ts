@@ -7,7 +7,7 @@ const C_loginUser = async (req: Request, res: Response) => {
 	//Check if user exists
 	const user = await db.getUser(req.body.email);
 	console.log(user);
-	if (!user) return res.status(400).send("No user found");
+	if (!user[0]) return res.status(401).send("No user found");
 
 	//If found, check for PW
 	try {
@@ -23,7 +23,7 @@ const C_loginUser = async (req: Request, res: Response) => {
 			);
 			res.json({ accessToken: accessToken, userName: user[0].name });
 		} else {
-			res.send("Incorrect password");
+			res.status(401).send("Invalid email or password");
 		}
 	} catch (err) {
 		//Not found user

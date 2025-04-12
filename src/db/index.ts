@@ -7,7 +7,6 @@ import {
 	usersTable,
 } from "./schema";
 import "dotenv/config";
-import { error } from "console";
 
 const db = drizzle(process.env.DATABASE_URL!);
 
