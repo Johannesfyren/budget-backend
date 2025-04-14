@@ -1,12 +1,6 @@
 const jtw = require("jsonwebtoken");
 import { NextFunction, Request, Response } from "express";
 
-declare namespace Express {
-	export interface Request {
-		user?: object;
-	}
-}
-
 function authenticateToken(req: Request, res: Response, next: NextFunction) {
 	const authHeader = req.headers["authorization"];
 	const token = authHeader && authHeader.split(" ")[1];
@@ -17,7 +11,7 @@ function authenticateToken(req: Request, res: Response, next: NextFunction) {
 	const user = jtw.verify(
 		token,
 		process.env.ACCESS_TOKEN_SECRET,
-		(err: Error, user: object) => {
+		(err: Error, user: User) => {
 			if (err) return res.sendStatus(403);
 			req.user = user;
 			next();
