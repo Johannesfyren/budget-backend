@@ -1,5 +1,5 @@
 import { drizzle } from "drizzle-orm/node-postgres";
-import { eq, and } from "drizzle-orm";
+import { eq, and, asc } from "drizzle-orm";
 import {
 	categoryTable,
 	expensesTable,
@@ -39,24 +39,80 @@ export async function getAllCategoriesFromSections(
 	return await db
 		.select({
 			category: categoryTable.name,
-			expenseName: expensesTable.name,
-			expenseValue: expensesTable.value,
-			payRate: expensesTable.FKPayRate,
+			categoryID: categoryTable.id,
 		})
-		.from(expensesTable)
-		.innerJoin(
-			categoryTable,
-			eq(categoryTable.id, expensesTable.FKCategoryID)
-		)
+		.from(categoryTable)
 		.where(
 			and(
-				eq(categoryTable.FKSectionID, sectionID),
-				eq(categoryTable.FKUserID, userID)
+				eq(categoryTable.FKUserID, userID),
+				eq(categoryTable.FKSectionID, sectionID)
 			)
-		);
+		)
+		.orderBy(asc(categoryTable.id));
+}
+
+export async function createCategory(
+	userID: number,
+	name: string,
+	sectionID: number
+) {
+	return await db.insert(categoryTable).values({
+		FKUserID: userID,
+		name: name,
+		FKSectionID: sectionID,
+	});
 }
 
 //expenses queries
-export async function getExpenses() {
-	return await db.select().from(usersTable);
+export async function getExpenses(categoryID: number) {
+	return await db
+		.select()
+		.from(expensesTable)
+		.where(eq(expensesTable.FKCategoryID, categoryID));
 }
+
+export async function postExpense(
+	name: string,
+	amount: number,
+	payRate: number,
+	categoryID: number,
+	expenseID: number
+) {
+	return await db
+		.update(expensesTable)
+		.set({
+			FKCategoryID: categoryID,
+			value: amount,
+			FKPayRate: payRate,
+			name: name,
+		})
+		.where(eq(expensesTable.id, expenseID));
+}
+
+//Gammel function som returnerer for meget.
+// export async function getAllCategoriesFromSections(
+// 	sectionID: number,
+// 	userID: number
+// ) {
+// 	return await db
+// 		.select({
+// 			category: categoryTable.name,
+// 			categoryID: categoryTable.id,
+// 			expenseName: expensesTable.name,
+// 			expenseValue: expensesTable.value,
+// 			payRate: expensesTable.FKPayRate,
+// 			expenseID: expensesTable.id,
+// 		})
+// 		.from(expensesTable)
+// 		.innerJoin(
+// 			categoryTable,
+// 			eq(categoryTable.id, expensesTable.FKCategoryID)
+// 		)
+// 		.where(
+// 			and(
+// 				eq(categoryTable.FKSectionID, sectionID),
+// 				eq(categoryTable.FKUserID, userID)
+// 			)
+// 		)
+// 		.orderBy(asc(categoryTable.id));
+// }

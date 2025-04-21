@@ -1,9 +1,9 @@
-GET http://127.0.0.1:3001/user/getUsers
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJDdaUzZXRnZLYkVMZ0lkYWZTVjFMWi53VDQvRXlPcWt6L0c0WUo3WlBNalVWQlFxaENYOWJlIiwiaWF0IjoxNzQ0MjAzNTc1LCJleHAiOjE3NDQyMDcxNzV9.Rdr-20Y3FrpQWmsvRGVmKib9FDsH_jBOicm1_uwTYNg
+GET http://127.0.0.1:3001/setup/getExpenses/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsImlhdCI6MTc0NTIzODQwMSwiZXhwIjoxNzQ1MjQyMDAxfQ.CLgGCDNKqQkuLjGxUnaeJKkh4YaTT3_INOkbMDxCgxA
 ###
 
 GET http://127.0.0.1:3001/setup/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjEyLCJuYW1lIjoiQ2FtbWkiLCJlbWFpbCI6ImNtaDJAbWFpbC5jb20iLCJpYXQiOjE3NDQyMDUxNzEsImV4cCI6MTc0NDIwODc3MX0.gETq5ngqm--3uukVQRpu4UhJi41NBi9QGHfU8XGy5nE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsImlhdCI6MTc0NTIzODQwMSwiZXhwIjoxNzQ1MjQyMDAxfQ.CLgGCDNKqQkuLjGxUnaeJKkh4YaTT3_INOkbMDxCgxA
 ###
 
 POST http://127.0.0.1:3001/user/createUser
@@ -24,4 +24,15 @@ Content-Type: application/json
 {
     "email": "cmh2@mail.com",
     "password": "123456"
+}
+###
+POST http://127.0.0.1:3001/setup/postExpense
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsImlhdCI6MTc0NTA3MDU0NiwiZXhwIjoxNzQ1MDc0MTQ2fQ.R4jBk0c4neJHbi0mT0VClyAQQyJG_MT2ERbnUCrw4bY
+Content-Type: application/json
+
+{
+    "name": "testname",
+    "amount": 123,
+    "payRate": 3,
+    "categoryID": 1
 }
