@@ -1,9 +1,9 @@
 GET http://127.0.0.1:3001/setup/getExpenses/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsImlhdCI6MTc0NTIzODQwMSwiZXhwIjoxNzQ1MjQyMDAxfQ.CLgGCDNKqQkuLjGxUnaeJKkh4YaTT3_INOkbMDxCgxA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsImlhdCI6MTc0NTg2ODAyMiwiZXhwIjoxNzQ1ODcxNjIyfQ.ySkVm1uZTDh0S0fuxr1424dOO2eESnX__bzEG2hXPnU
 ###
 
-GET http://127.0.0.1:3001/setup/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsImlhdCI6MTc0NTIzODQwMSwiZXhwIjoxNzQ1MjQyMDAxfQ.CLgGCDNKqQkuLjGxUnaeJKkh4YaTT3_INOkbMDxCgxA
+GET http://127.0.0.1:3001/setup/expenses/getExpenseSummary
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsImlhdCI6MTc0NTkxMzY5OSwiZXhwIjoxNzQ1OTE3Mjk5fQ.Mo0rNxIe3bJyWTPnqZ8K205SCM1LLcrUZw-JZmSx54Q
 ###
 
 POST http://127.0.0.1:3001/user/createUser
@@ -11,7 +11,7 @@ Content-Type: application/json
 
 {
     "name": "Cammi",
-    "email": "cmh2@mail.com",
+    "email": "test@test.com",
     "password": "123456"
 
 }
@@ -21,10 +21,14 @@ Content-Type: application/json
 POST http://127.0.0.1:3001/auth/login
 Content-Type: application/json
 
-{
+
+  {
     "email": "cmh2@mail.com",
-    "password": "123456"
-}
+   "password": "123456"
+ }  
+###
+
+
 ###
 POST http://127.0.0.1:3001/setup/postExpense
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsImlhdCI6MTc0NTA3MDU0NiwiZXhwIjoxNzQ1MDc0MTQ2fQ.R4jBk0c4neJHbi0mT0VClyAQQyJG_MT2ERbnUCrw4bY

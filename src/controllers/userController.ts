@@ -14,8 +14,8 @@ const C_getUsers = async (req: Request, res: Response) => {
 		res.json(users);
 		return users;
 	} catch (err) {
-		console.log("error in getUsers", err);
-		res.status(500).send("An error occurred");
+		console.log("error in getUsers..", err);
+		res.status(500).send("An error occurred in C_getUsers");
 	}
 };
 
@@ -26,8 +26,8 @@ const C_createUser = async (req: Request, res: Response) => {
 		res.status(200).send();
 		//return users;
 	} catch (err) {
-		console.log("error in getUsers", err);
-		res.status(500).send("An error occurred");
+		console.log("error in getUsers.", err);
+		res.status(500).send("An error occurred in C_createuser");
 	}
 };
 

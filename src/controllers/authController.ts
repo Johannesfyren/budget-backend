@@ -27,8 +27,8 @@ const C_loginUser = async (req: Request, res: Response) => {
 		}
 	} catch (err) {
 		//Not found user
-		console.log("error in getUsers", err);
-		res.status(500).send("An error occurred");
+		console.log("error in loginUser", err);
+		res.status(500).send("An error occurred during login");
 	}
 };
 
