@@ -2,43 +2,43 @@ import { Router } from "express";
 import authenticateToken from "../middleware/authentication";
 const setupData = require("../controllers/setupData");
 
-const indexRouter = Router();
+const setupRouter = Router();
 
-indexRouter.get(
+setupRouter.get(
 	"/setup/:sectionID",
 	authenticateToken,
 	setupData.C_getAllCategoriesFromSections
 );
-indexRouter.get(
+setupRouter.get(
 	"/setup/getExpenses/:categoryID",
 	authenticateToken,
 	setupData.C_getExpenses
 );
-indexRouter.get(
+setupRouter.get(
 	"/setup/expenses/getExpenseSummary",
 	authenticateToken,
 	setupData.C_getExpenseSummary
 );
 
-indexRouter.post(
+setupRouter.post(
 	"/setup/postExpense/:expenseID",
 	authenticateToken,
 	setupData.C_postExpense
 );
-indexRouter.post(
+setupRouter.post(
 	"/setup/newExpense",
 	authenticateToken,
 	setupData.C_newExpense
 );
-indexRouter.post(
+setupRouter.post(
 	"/setup/createCategory/:sectionID",
 	authenticateToken,
 	setupData.C_createCategory
 );
-indexRouter.delete(
+setupRouter.delete(
 	"/setup/deleteExpense/:expenseID",
 	authenticateToken,
 	setupData.C_deleteExpense
 );
 
-module.exports = indexRouter;
+module.exports = setupRouter;

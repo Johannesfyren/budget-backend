@@ -3,7 +3,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiO
 ###
 
 GET http://127.0.0.1:3001/setup/expenses/getExpenseSummary
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsImlhdCI6MTc0NTkxMzY5OSwiZXhwIjoxNzQ1OTE3Mjk5fQ.Mo0rNxIe3bJyWTPnqZ8K205SCM1LLcrUZw-JZmSx54Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJDYW1taSIsImVtYWlsIjoiY21oMkBtYWlsLmNvbSIsImlhdCI6MTc0NjE4MTg1NywiZXhwIjoxNzQ2MTg1NDU3fQ.RrcElv69rPawE9YyAhCc--OkQ9Jd09ECsQow8BhNG2M
 ###
 
 POST http://127.0.0.1:3001/user/createUser

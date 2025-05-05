@@ -165,3 +165,37 @@ export async function getIncomeSum(userID: number) {
 			)
 		);
 }
+
+//--------------Overview queries-------------//
+
+export async function getUserExpenseSumBySection(
+	userID: number
+): Promise<ExpenseData[]> {
+	return await db
+		.select({
+			sectionID: categoryTable.FKSectionID,
+			total: sql<number>`
+                SUM(
+                    CASE 
+                        WHEN ${expensesTable.FKPayRate} = 1 THEN ${expensesTable.value}
+                        WHEN ${expensesTable.FKPayRate} = 2 THEN ${expensesTable.value} / 3
+                        WHEN ${expensesTable.FKPayRate} = 3 THEN ${expensesTable.value} / 12
+                        ELSE 0
+                    END
+                )
+            `,
+		})
+		.from(expensesTable)
+		.leftJoin(
+			categoryTable,
+			eq(expensesTable.FKCategoryID, categoryTable.id)
+		)
+		.where(
+			and(
+				eq(categoryTable.FKUserID, userID),
+				not(eq(categoryTable.FKSectionID, 5))
+			)
+		)
+		.groupBy(categoryTable.FKSectionID)
+		.orderBy(categoryTable.FKSectionID);
+}
